@@ -1,0 +1,53 @@
+.header-main {
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+}
+.title-part {
+    align-items: center;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    color: #5a328a;
+    font-weight: bold;
+    font-size: 32px;
+    font-family: 'Dancing Script', cursive;
+}
+.logo-part {
+    flex-basis: 10%;
+    color: #5a328a;
+    font-weight: bold;
+    font-size: 32px;
+    font-family: 'Dancing Script', cursive;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.header-container {
+    display: flex;
+
+}
+.header-list-part {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.first-part-header  {
+    display: flex;
+}
+
+.list-part {
+    list-style-type:none;
+    display: flex;
+    padding: 0;
+
+    li {
+        margin: 0 15px;
+        
+        &:hover {
+            text-decoration: underline;
+            cursor: pointer;
+        }
+    }
+}
