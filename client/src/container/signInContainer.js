@@ -20,7 +20,7 @@ class SignInContainer extends Component {
 
 
 const mapStateToProps = (state) => {
-}
+}  
 
 const mapDispatchToProps = (dispatch) => {
     return {
@@ -31,4 +31,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(null, mapDispatchToProps)(SignInContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(SignInContainer);
