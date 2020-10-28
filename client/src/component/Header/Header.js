@@ -11,7 +11,7 @@ function HeaderComponent(props) {
 
     const handleSignIn = () => {
         const { history } = props;
-        history.push("/sign-in");
+        history.push("/sign-up");
     }
 
     const handleLogin = () => {
@@ -39,7 +39,7 @@ function HeaderComponent(props) {
                     </div>
                     <div className="sec-part-header">
                         <ul className="list-part">
-                            <li onClick={handleSignIn}> Sign-In </li>
+                            <li onClick={handleSignIn}> Sign-Up </li>
                             <li onClick={handleLogin}> Login </li>
                             <li> Log Out </li>
 

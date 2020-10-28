@@ -1,10 +1,24 @@
 const express = require("express");
 const User = require("../models/User");
 const auth = require("../middleware/auth");
+var cors = require('cors')
+
+var app = express();
+app.use(cors())
+
+
 
 const router = new express.Router();
 
-router.post("/users", async (req, res) => {
+
+var corsOptions = {
+  origin: '*',
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Headers": "*",
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
+router.post("/users", cors(corsOptions), async (req, res) => {
+
   const user = new User(req.body);
   try {
     await user.save();
@@ -16,7 +30,7 @@ router.post("/users", async (req, res) => {
   }
 });
 
-router.post("/users/login", async (req, res) => {
+router.post("/users/login", cors(corsOptions), async (req, res) => {
   try {
     console.log(req.body);
     const user = await User.findByCredentials(
@@ -27,12 +41,23 @@ router.post("/users/login", async (req, res) => {
     res.send({ user, token });
   } catch (e) {
     console.error(e);
-    res.sendStatus(400);
+    res.status(400).send({error: "Wrong email or password "});
   }
 });
 
+router.post("/users/id", cors(corsOptions), async (req,res) => {
+  try {
+    const { id } = req.body;
+    const user = await User.findById(id);
+    res.send({user})
+  } catch (error) {
+      console.log(error);
+      res.status(400).send({error: "failed to fetch the data "});
+  }
+})
+
 router.get("/users/me", auth, async (req, res) => {
-  res.send(req.user);
+  res.status(200).send(req.user);
 });
 
 router.post("/users/logout", auth, async (req, res) => {

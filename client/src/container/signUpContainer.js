@@ -1,13 +1,14 @@
 import { connect } from "react-redux";
-import React, { Component } from "react";
-import SignIn from "../component/SignIn/signIn"
+import React, { Component } from "react"
 import { bindActionCreators } from "redux"
+import SignUp from "../component/SignUp/signUp";
+import { registerUser } from "../action/register"
 
-class SignInContainer extends Component {
+class SignUpContainer extends Component {
 
     render() {
         return (
-            <SignIn
+            <SignUp
                 {...this.props}
                 // initialValues={{
                 //     firstName: "abcd"
@@ -20,15 +21,17 @@ class SignInContainer extends Component {
 
 
 const mapStateToProps = (state) => {
+  
 }  
 
 const mapDispatchToProps = (dispatch) => {
     return {
         dispatch,
         ...bindActionCreators({ 
+            onRegisterUser: registerUser
         },
         dispatch)
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignInContainer);
+export default connect(null, mapDispatchToProps)(SignUpContainer);

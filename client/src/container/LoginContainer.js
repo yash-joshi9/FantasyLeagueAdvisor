@@ -2,7 +2,9 @@ import { connect } from "react-redux";
 import React, { Component } from "react";
 import Login from "../component/Login/login"
 import { bindActionCreators } from "redux"
-import { handleLogin } from "../action/login"
+import { loginUser } from "../action/login"
+import { withRouter } from "react-router"
+
 
 class LoginContainer extends Component {
 
@@ -10,9 +12,9 @@ class LoginContainer extends Component {
         return (
             <Login
                 {...this.props}
-                // initialValues={{
-                //     firstName: "abcd"
-                // }}
+            // initialValues={{
+            //     firstName: "abcd"
+            // }}
             />
         );
     }
@@ -21,16 +23,25 @@ class LoginContainer extends Component {
 
 
 const mapStateToProps = (state) => {
-}
-
-const mapDispatchToProps = (dispatch) => {
+    const {
+        User: {
+            loginError
+        }
+    } = state
     return {
-        dispatch,
-        ...bindActionCreators({ 
-            handleLogin: handleLogin
-        },
-        dispatch)
+        loginError
     }
 }
 
-export default connect(null, mapDispatchToProps)(LoginContainer);
+const mapDispatchToProps = (dispatch, ownProps) => {
+    return {
+        dispatch,
+        ownProps,
+        ...bindActionCreators({
+            onHandleLoginUser: loginUser
+        },
+            dispatch, ownProps)
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(LoginContainer));

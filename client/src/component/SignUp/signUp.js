@@ -1,11 +1,11 @@
 import React, { Component, useCallback } from "react"
 import { Field, formValues, reduxForm } from "redux-form";
 
-function SignIn(props) {
+function SignUp(props) {
 
-    const handleValue = useCallback((values) => {
-        console.log(values)
-        // handle the click event
+    const handleValue = useCallback(async (values) => {
+        const { onRegisterUser } = props;
+        await onRegisterUser(values);
       }, []);
 
     const { handleSubmit, handleLogin } = props;
@@ -13,7 +13,7 @@ function SignIn(props) {
         <form onSubmit={handleSubmit(handleValue)}>
             <div>
                 <label htmlFor="userName">User Name</label>
-                <Field name="userName" component="input" type="text" />
+                <Field name="name" component="input" type="text" />
             </div>
             <div>
                 <label htmlFor="email">Email</label>
@@ -25,7 +25,7 @@ function SignIn(props) {
             </div>
             <div>
                 <label htmlFor="passowrd">Password</label>
-                <Field name="passoword" component="input" type="password" />
+                <Field name="password" component="input" type="password" />
             </div>
             <button type="submit">Submit</button>
         </form>
@@ -34,5 +34,5 @@ function SignIn(props) {
 
 
 export default reduxForm({
-    form: 'sign-in',
-})(SignIn)
+    form: 'sign-up',
+})(SignUp)

@@ -8,7 +8,7 @@ class FooterComponent extends Component {
             <div className="footer-main">
                 <div className="text">
                     {/* Betty's */}
-                    Art Store  &copy; 2020
+                    FLA  &copy; 2020
                 </div>
             </div>
         );
