@@ -27,11 +27,12 @@ export const registerUser = (values) => async (dispatch) => {
     })
       .then(response => response.json())
       .then(async (result) => {
-        console.log(result)
         const { token, user } = result;
-        const { name, password } = user;
+        const { _id } = user;
         cookies.set('authToken', token);
-        loginUser({name, password});
+        cookies.set('userId', _id);
+
+        window.location.href = "/dashboard";
       })
       .catch(error => console.log('error', error));
 

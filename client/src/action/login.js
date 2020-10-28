@@ -1,8 +1,4 @@
-import { Redirect } from 'react-router-dom'
-import Cookies from 'universal-cookie';
-
-const cookies = new Cookies();
-
+import cookies from "../cookie/cookie";
 
 const login = (payload) => {
   return {
@@ -41,7 +37,7 @@ export const loginUser = (values) => async (dispatch, getState, ownProps) => {
       const { token, user, error, user :{ _id }} = result;
       const getToken = cookies.get("authToken")
 
-      if (getToken === "undefined") {
+      if (getToken == undefined) {
         cookies.set("authToken", token)
         cookies.set("userId", _id)
       }
@@ -57,4 +53,28 @@ export const loginUser = (values) => async (dispatch, getState, ownProps) => {
     }).catch(error => {
       console.log(error);
     });
+}
+
+
+
+export const logout = () => (dispatch) => {
+  const token = cookies.get("authToken")
+  const url = "http://localhost:3000/users/logout"
+
+  fetch(url, {
+    method: "POST",
+    headers: {
+      "Authorization": `Bearer ${token}`
+    },
+    body: JSON.stringify(token),
+  }).then(res => res.json()).then(result => {
+
+    if(result.message == "logout successful") {
+      cookies.remove("authToken");
+      cookies.remove("userId");
+      window.location.href = "/"
+    }
+  }).catch((e) => {
+    console.log(e, ">>>>>>>>>")
+  })
 }

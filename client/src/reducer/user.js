@@ -6,11 +6,12 @@ const init = {
     phoneNumber: "",
     time: "",
     loginError: "",
-    setAuth: false
+    setAuth: false,
+    isLogin: false
 }
 
 
-const User = (state = init, action) => {
+const user = (state = init, action) => {
 
     switch(action.type) {
         case "REGISTER_USER":
@@ -20,7 +21,8 @@ const User = (state = init, action) => {
                 ...state,
                 ...action.payload,
                 setAuth: true,
-                loginError: ""
+                loginError: "",
+                isLogin: true
             }
         case "ERROR_LOGIN":
             return {
@@ -32,4 +34,4 @@ const User = (state = init, action) => {
     }
 }
 
-export default User;
+export default user;

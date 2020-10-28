@@ -45,7 +45,7 @@ router.post("/users/login", cors(corsOptions), async (req, res) => {
   }
 });
 
-router.post("/users/id", cors(corsOptions), async (req,res) => {
+router.post("/users/id", cors(corsOptions), auth, async (req,res) => {
   try {
     const { id } = req.body;
     const user = await User.findById(id);
@@ -61,12 +61,13 @@ router.get("/users/me", auth, async (req, res) => {
 });
 
 router.post("/users/logout", auth, async (req, res) => {
+  console.log("<>>>>>>>>>>>>>>>>>>", req)
   try {
     req.user.tokens = req.user.tokens.filter((token) => {
       return token.token !== req.token;
     });
     await req.user.save();
-    res.send();
+    res.status(200).send({message: "logout successful"});
   } catch (e) {
     res.sendStatus(500);
   }

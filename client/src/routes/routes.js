@@ -2,7 +2,7 @@ import {Switch, Route, Redirect} from "react-router";
 import React, { Fragment } from "react";
 
 import FooterComponent from "../component/Footer/Footer";
-import HeaderComponent from "../component/Header/Header"
+import HeaderComponent from "../container/headerContainer";
 import SignUpContainer from "../container/signUpContainer";
 import LoginContainer from "../container/LoginContainer";
 import dashboardContainer from "../container/dashboardContainer";

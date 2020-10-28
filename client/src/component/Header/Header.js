@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { withRouter } from "react-router";
 import "./style.scss";
 
@@ -19,10 +19,16 @@ function HeaderComponent(props) {
         history.push("/login");
     }
 
+    const handleLogout = () => {
+        const { onLogout } = props;
+        onLogout();
+    }
+
+    const { isLogin } = props;
     return (
         <div className="header-main">
             <div className="title-part">
-                   Dream 11 Advisor
+                Dream 11 Advisor
                 </div>
             <div className="header-container">
                 <div className="logo-part">
@@ -39,9 +45,16 @@ function HeaderComponent(props) {
                     </div>
                     <div className="sec-part-header">
                         <ul className="list-part">
-                            <li onClick={handleSignIn}> Sign-Up </li>
-                            <li onClick={handleLogin}> Login </li>
-                            <li> Log Out </li>
+                            {
+                                isLogin ?
+                                    <li onClick={handleLogout}> Log Out </li>
+                                    :
+                                    <Fragment>
+
+                                        <li onClick={handleSignIn}> Sign-Up </li>
+                                        <li onClick={handleLogin}> Login </li>
+                                    </Fragment>
+                            }
 
                         </ul>
                     </div>

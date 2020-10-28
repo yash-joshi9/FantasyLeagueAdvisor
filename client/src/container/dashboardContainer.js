@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import React, { Component, useEffect } from "react";
+import React, { Component, useEffect, useState } from "react";
 import Dashboard from "../component/dashboard/dashboard"
 import { bindActionCreators } from "redux"
 import cookies from "../cookie/cookie";
@@ -7,19 +7,27 @@ import { getUserById } from "../action/dashboard"
 
 function DashboardContainer(props) {
 
+    const [isLoading, setisLoading] = useState(true);
     useEffect(() => {
         const { onGetUserById } = props;
         const userId = cookies.get("userId");
-        onGetUserById(userId);
+        onGetUserById(userId).then(() => {
+            setisLoading(false)
+        });
+
     }, [])
 
     return (
-        <Dashboard
-            {...props}
-        // initialValues={{
-        //     firstName: "abcd"
-        // }}
-        />
+
+        isLoading ?
+            ""
+            :
+            <Dashboard
+                {...props}
+            // initialValues={{
+            //     firstName: "abcd"
+            // }}
+            />
     );
 }
 
@@ -27,10 +35,10 @@ function DashboardContainer(props) {
 
 const mapStateToProps = (state) => {
     const {
-        User
+        user
     } = state
     return {
-        User
+        ...user
     }
 }
 

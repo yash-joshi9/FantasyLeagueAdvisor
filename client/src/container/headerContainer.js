@@ -1,20 +1,16 @@
 import { connect } from "react-redux";
 import React, { Component } from "react";
-import Login from "../component/Login/login"
 import { bindActionCreators } from "redux"
-import { loginUser } from "../action/login"
+import Header from "../component/Header/Header";
 import { withRouter } from "react-router"
+import { logout } from "../action/login"
 
-
-class LoginContainer extends Component {
+class HeaderContainer extends Component {
 
     render() {
         return (
-            <Login
+            <Header
                 {...this.props}
-            // initialValues={{
-            //     firstName: "abcd"
-            // }}
             />
         );
     }
@@ -25,11 +21,11 @@ class LoginContainer extends Component {
 const mapStateToProps = (state) => {
     const {
         user: {
-            loginError
+            isLogin
         }
     } = state
     return {
-        loginError
+        isLogin
     }
 }
 
@@ -38,10 +34,10 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         dispatch,
         ownProps,
         ...bindActionCreators({
-            onHandleLoginUser: loginUser
+            onLogout: logout
         },
             dispatch, ownProps)
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(LoginContainer));
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(HeaderContainer));
