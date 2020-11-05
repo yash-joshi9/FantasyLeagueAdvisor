@@ -17,6 +17,7 @@ const renderField = ({ input, label, type, meta: { touched, error } }) => {
 
 function SignUp(props) {
 
+    const { loginError } = props;
     const handleValue = useCallback(async (values) => {
         const { onRegisterUser } = props;
         const { name, email, phoneNumber, password } = values;
@@ -36,12 +37,12 @@ function SignUp(props) {
                 phoneNumber: 'not valid number',
                 _error: 'Please fill the values!'
             })
-        } else if (!password || password.length < 7 ) {
+        } else if (!password || password.length < 7) {
             throw new SubmissionError({
                 password: 'password must be more than 7 characters',
                 _error: 'Please fill the values!'
             })
-        } 
+        }
 
         await onRegisterUser(values);
     }, []);
@@ -64,6 +65,13 @@ function SignUp(props) {
             <div>
                 <label htmlFor="password">Password</label>
                 <Field name="password" component={renderField} type="password" />
+            </div>
+            <div>
+                {
+                    loginError ?
+                    loginError:
+                    ""
+                }
             </div>
             <button type="submit">Submit</button>
         </form>

@@ -21,8 +21,13 @@ class SignUpContainer extends Component {
 
 
 const mapStateToProps = (state) => {
-  
-}  
+    const {
+        user
+    } = state
+    return {
+        ...user
+    }
+}
 
 const mapDispatchToProps = (dispatch) => {
     return {
@@ -34,4 +39,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(null, mapDispatchToProps)(SignUpContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(SignUpContainer);

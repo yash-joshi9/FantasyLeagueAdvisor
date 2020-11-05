@@ -1,4 +1,5 @@
 import cookies from "../cookie/cookie";
+const host = process.env.REACT_APP_REACT_HOST;
 
 const login = (payload) => {
   return {
@@ -21,7 +22,7 @@ export const loginUser = (values) => async (dispatch, getState, ownProps) => {
   if (!email.length || !password.length) {
     return "";
   }
-  let url = "http://localhost:3000/users/login"
+  let url = `${host}/users/login`
   fetch(url, {
     method: 'POST',
     headers: {
@@ -59,7 +60,7 @@ export const loginUser = (values) => async (dispatch, getState, ownProps) => {
 
 export const logout = () => (dispatch) => {
   const token = cookies.get("authToken")
-  const url = "http://localhost:3000/users/logout"
+  const url = `${host}/users/logout`
 
   fetch(url, {
     method: "POST",

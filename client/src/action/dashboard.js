@@ -1,5 +1,7 @@
 import cookies from "../cookie/cookie";
 
+const host = process.env.REACT_APP_REACT_HOST;
+
 const setUser = (payload) => {
     return {
       type: "LOGIN_USER",
@@ -8,7 +10,7 @@ const setUser = (payload) => {
   }
 
 export const getUserById = (id) => async (dispatch) => {
-    let url = "http://localhost:3000/users/id"
+    let url = `${host}/users/id`
     const data = {id}
     const token =  cookies.get("authToken")
     try {

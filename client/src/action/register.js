@@ -1,6 +1,6 @@
-import { loginUser } from "./login";
 import Cookies from 'universal-cookie';
 const cookies = new Cookies();
+const host = process.env.REACT_APP_REACT_HOST;
 
 
 export const register = (payload) => {
@@ -13,7 +13,7 @@ export const register = (payload) => {
 
 export const registerUser = (values) => async (dispatch) => {
    
-    let url = "http://localhost:3000/users"
+    let url = `${host}/users`
     
     fetch(url, {
       method: 'POST',
@@ -27,6 +27,10 @@ export const registerUser = (values) => async (dispatch) => {
     })
       .then(response => response.json())
       .then(async (result) => {
+
+        if(result.error) {
+          return dispatch(register(result.error)) 
+        }
         const { token, user } = result;
         const { _id } = user;
         cookies.set('authToken', token);
@@ -35,8 +39,6 @@ export const registerUser = (values) => async (dispatch) => {
         window.location.href = "/dashboard";
       })
       .catch(error => console.log('error', error));
-
-
 }
 
 

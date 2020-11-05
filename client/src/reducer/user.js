@@ -13,9 +13,12 @@ const init = {
 
 const user = (state = init, action) => {
 
-    switch(action.type) {
+    switch (action.type) {
         case "REGISTER_USER":
-            return state
+            return {
+                ...state,
+                loginError: action.payload
+            }
         case "LOGIN_USER":
             return {
                 ...state,
