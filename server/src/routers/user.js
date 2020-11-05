@@ -21,11 +21,17 @@ router.post("/users", cors(corsOptions), async (req, res) => {
 
   const user = new User(req.body);
   try {
+    const email = req.body.email;
+    const isUser = await User.findOne({email});
+
+    if(isUser) {
+      return res.status(200).send({ error: "Already registered" })
+    }
     await user.save();
     const token = await user.generateAuthToken();
     res.status(201).send({ user, token });
   } catch (e){
-      console.log(e)
+    console.log(e)
     res.sendStatus(400);
   }
 });
@@ -38,7 +44,7 @@ router.post("/users/login", cors(corsOptions), async (req, res) => {
       req.body.password
     );
     const token = await user.generateAuthToken();
-    res.send({ user, token });
+    res.status(200).send({ user, token });
   } catch (e) {
     console.error(e);
     res.status(400).send({error: "Wrong email or password "});
