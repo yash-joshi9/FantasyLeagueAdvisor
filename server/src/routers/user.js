@@ -78,4 +78,6 @@ router.post("/users/logout", auth, async (req, res) => {
   }
 });
 console.log("Nikhil");
+
+console.log("ashmit");
 module.exports = router;
