@@ -77,7 +77,5 @@ router.post("/users/logout", auth, async (req, res) => {
     res.sendStatus(500);
   }
 });
-console.log("Nikhil");
 
-console.log("ashmit");
 module.exports = router;
