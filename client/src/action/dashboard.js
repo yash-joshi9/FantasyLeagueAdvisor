@@ -9,6 +9,13 @@ const setUser = (payload) => {
     }
   }
 
+const setDashboard = (payload) => {
+  return {
+    type: "SET_DASHBOARD",
+    payload
+  }
+} 
+
 export const getUserById = (id) => async (dispatch) => {
     let url = `${host}/users/id`
     const data = {id}
@@ -34,4 +41,9 @@ export const getUserById = (id) => async (dispatch) => {
         
     }
 
+}
+
+
+export const handleShowLoginSignUp = (value) => (dispatch) => {
+    return dispatch(setDashboard(value))
 }

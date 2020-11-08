@@ -4,6 +4,8 @@ import { bindActionCreators } from "redux"
 import Header from "../component/Header/Header";
 import { withRouter } from "react-router"
 import { logout } from "../action/login"
+import { handleShowLoginSignUp } from "../action/dashboard";
+
 
 class HeaderContainer extends Component {
 
@@ -22,21 +24,25 @@ const mapStateToProps = (state) => {
     const {
         user: {
             isLogin
+        },
+        dashboard: {
+            onIsShowLoginSignUp
         }
     } = state
     return {
+        onIsShowLoginSignUp,
         isLogin
     }
 }
 
-const mapDispatchToProps = (dispatch, ownProps) => {
+const mapDispatchToProps = (dispatch) => {
     return {
         dispatch,
-        ownProps,
         ...bindActionCreators({
-            onLogout: logout
+            onLogout: logout,
+            onHandleShowLoginSignUp: handleShowLoginSignUp
         },
-            dispatch, ownProps)
+            dispatch)
     }
 }
 

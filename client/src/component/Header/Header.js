@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { withRouter } from "react-router";
+import LoginSignUpModal from "../login-signup-modal/loginSignUpModal";
 import "./style.scss";
 
 
@@ -24,7 +25,9 @@ function HeaderComponent(props) {
         onLogout();
     }
 
-    const { isLogin } = props;
+
+    const { isLogin, onIsShowLoginSignUp, onHandleShowLoginSignUp } = props;
+
     return (
         <div className="header-main">
             <div className="title-part">
@@ -51,8 +54,12 @@ function HeaderComponent(props) {
                                     :
                                     <Fragment>
 
-                                        <li onClick={handleSignIn}> Sign-Up </li>
-                                        <li onClick={handleLogin}> Login </li>
+                                        <li onClick={() => onHandleShowLoginSignUp(true)}> Login/Sign-Up </li>
+                                        <LoginSignUpModal
+                                            onIsShowLoginSignUp={onIsShowLoginSignUp}
+                                            onHandleShowLoginSignUp={onHandleShowLoginSignUp}
+                                        />
+                                        {/* <li onClick={handleLogin}> Login </li> */}
                                     </Fragment>
                             }
 
