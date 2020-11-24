@@ -15,6 +15,7 @@ const errorLogin = (payload) => {
   }
 }
 
+console.log(">>>>>")
 
 export const loginUser = (values) => async (dispatch, getState, ownProps) => {
   let { email, password } = values;
