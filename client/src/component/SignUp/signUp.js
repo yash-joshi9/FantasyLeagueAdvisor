@@ -95,7 +95,7 @@ function SignUp(props) {
             </div>
             <div class="thumbnail__content text-center">
             <h1 class="heading--primary">Welcome to Fantasy league advisor.</h1>
-            <h2 class="heading--secondary">Are you ready to join the league?</h2>
+            <div class="heading--secondary">Are you ready to join the league?</div>
             </div>
             <div class="thumbnail__links">
             <ul class="list-inline m-b-0 text-center">

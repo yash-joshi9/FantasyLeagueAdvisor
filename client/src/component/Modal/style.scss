@@ -19,7 +19,12 @@
 }
 .close-button {
     position: absolute;
-    top: 0;
-    right: 0;
+    top: 10px;
+    right: 10px;
     cursor: pointer;
+    border: 0;
+    background: transparent;
+    img {
+        width: 15px;
+    }
 }

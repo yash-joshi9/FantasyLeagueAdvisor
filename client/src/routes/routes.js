@@ -7,6 +7,7 @@ import HeaderComponent from "../container/headerContainer";
 // import LoginContainer from "../container/LoginContainer";
 import dashboardContainer from "../container/dashboardContainer";
 import ErrorPage404 from "../component/ErrorPage/errorPage404"
+import LandingPage from "../component/LandingPage/landingPage"
 import Cookies from "universal-cookie";
 const cookies = new Cookies();
 
@@ -38,6 +39,7 @@ export const Routes = () => {
                         {/* <Route path="/sign-up" exact={true} component={SignUpContainer} /> */}
                         {/* <Route path="/login" exact={true} component={LoginContainer} /> */}
                         {/* <Route component={ErrorPage404} /> */}
+                        <Route path="/" exact={true} component={LandingPage} />
                     </Fragment>
                 )
             }
