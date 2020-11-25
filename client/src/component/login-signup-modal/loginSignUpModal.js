@@ -7,16 +7,27 @@ import "./style.scss";
 
 export default function LoginSignUpModal(props) {
 
-    const [isLogin, setisLogin] = useState(true)
+    const [isLogin, setisLogin] = useState(false)
 
     const { onHandleShowLoginSignUp, onIsShowLoginSignUp } = props;
+
+    const showLogin = () => {
+        setisLogin(true)
+    }
+
+    
+    const showSignUp = () => {
+        setisLogin(false)
+    }
+
     return (
         <Modal
             open={onIsShowLoginSignUp}
+            ownClass="login-signup-modal"
             onClose={() => onHandleShowLoginSignUp(false)}
         >
             <div className="login-signup-container">
-                <div className="header-bar">
+                {/* <div className="header-bar">
                     <div
                         className={`header-text ${isLogin ? "is-selected" : ""}`}
                         onClick={() => setisLogin(true)}>
@@ -27,13 +38,17 @@ export default function LoginSignUpModal(props) {
                         onClick={() => setisLogin(false)}>
                         Sign-Up
                     </div>
-                </div>
+                </div> */}
 
                 {isLogin
                     ?
-                    <LoginContainer />
+                    <LoginContainer 
+                        showSignUp={showSignUp}
+                    />
                     :
-                    <SignUpContainer />
+                    <SignUpContainer 
+                        showLogin={showLogin}
+                    />
                 }
             </div>
         </Modal>
