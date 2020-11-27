@@ -12,6 +12,8 @@ import Cookies from "universal-cookie";
 import teamsContainer from "../container/teamsContainer";
 import CreateTeamContainer from "../container/createTeam";
 import MatchesContainer from "../container/MatchesContainer";
+import AboutUs from "../component/AboutUs/AboutUs" 
+
 
 const cookies = new Cookies();
 
@@ -49,6 +51,8 @@ export const Routes = () => {
                         {/* <Route path="/sign-up" exact={true} component={SignUpContainer} /> */}
                         {/* <Route path="/login" exact={true} component={LoginContainer} /> */}
                         {/* <Route component={ErrorPage404} /> */}
+                        <Route path="/AboutUs" exact={true} component={AboutUs} />
+
                     </Fragment>
                 )
             }

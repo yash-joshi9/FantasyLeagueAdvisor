@@ -63,6 +63,11 @@ function HeaderComponent(props) {
     history.push("/matches");
   };
 
+  const handleAboutUs = async (e) => {
+    const { history } = props;
+    history.push("/AboutUs");
+  };
+
   const getToken = cookies.get("authToken");
   return (
     <div className={`header-main ${scroll ? "is-scrolled" : ""}`}>
@@ -134,7 +139,7 @@ function HeaderComponent(props) {
               {getToken && (
                 <li onClick={() => handleCreateTeam()}> Create a team </li>
               )}
-              <li> About Us </li>
+              <li onClick={() =>handleAboutUs()}> About Us </li>
               <li> Help </li>
             </ul>
           </div>
