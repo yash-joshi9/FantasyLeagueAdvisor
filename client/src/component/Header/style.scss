@@ -4,6 +4,13 @@
     padding-top: 20px;
     position: fixed;
     width: 100%;
+    z-index: 99;
+    box-shadow: 0 4px 8px 0 hsla(0,0%,7%,.5);
+    background-color: #D1D1D1;
+    &.is-scrolled {
+        background-color: white;
+        transition: all 0.2s ease-in-out;
+    }
 }
 .title-part {
     align-items: center;
@@ -28,12 +35,6 @@
 }
 .header-container {
     display: flex;
-
-    &.is-scrolled {
-        background-color: white;
-        transition: all 0.2s ease-in-out;
-    }
-
 }
 .header-list-part {
     display: flex;

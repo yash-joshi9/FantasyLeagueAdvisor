@@ -31,8 +31,13 @@ function HeaderComponent(props) {
     onLogout();
   };
 
-  const { isLogin, onIsShowLoginSignUp, onHandleShowLoginSignUp, onGetTeamDetailsByName } = props;
-  
+  const {
+    isLogin,
+    onIsShowLoginSignUp,
+    onHandleShowLoginSignUp,
+    onGetTeamDetailsByName,
+  } = props;
+
   const [scroll, setScroll] = useState(false);
   useEffect(() => {
     window.addEventListener("scroll", () => {
@@ -41,17 +46,31 @@ function HeaderComponent(props) {
   }, []);
 
   const handleTeam = async (e) => {
-    const teamName = e.currentTarget.textContent
+    const teamName = e.currentTarget.textContent;
     const { history } = props;
-    await onGetTeamDetailsByName(teamName)
+    await onGetTeamDetailsByName(teamName);
 
-    history.push(`/teams/${teamName}`)
+    history.push(`/teams/${teamName}`);
+  };
+
+
+
+  const handleCreateTeam = async (e) => {
+    const { history } = props;
+    history.push("/create-a-team")
   }
 
+  const handleMatches = async (e) => {
+    const { history } = props;
+    history.push("/matches")
+  }
+  
+
+  const getToken = cookies.get("authToken");
   return (
-    <div className="header-main">
+    <div className={`header-main ${scroll ? "is-scrolled" : ""}`}>
       <div className="title-part">Fantasy League Advisor</div>
-      <div className={`header-container  ${scroll ? "is-scrolled" : ""}`}>
+      <div className="header-container">
         <div className="logo-part">FLA</div>
         <div className="header-list-part">
           <div className="first-part-header">
@@ -61,7 +80,9 @@ function HeaderComponent(props) {
                 <DropDown>
                   <ul>
                     <li>
-                      <div onClick={(e) => handleTeam(e)}>Chennai Super Kings</div>
+                      <div onClick={(e) => handleTeam(e)}>
+                        Chennai Super Kings
+                      </div>
                     </li>
                     <li>
                       <div onClick={(e) => handleTeam(e)}>Delhi Capitals</div>
@@ -70,7 +91,9 @@ function HeaderComponent(props) {
                       <div onClick={(e) => handleTeam(e)}>Kings XI Punjab</div>
                     </li>
                     <li>
-                      <div onClick={(e) => handleTeam(e)}>Kolkata Knight Riders</div>
+                      <div onClick={(e) => handleTeam(e)}>
+                        Kolkata Knight Riders
+                      </div>
                     </li>
                     <li>
                       <div onClick={(e) => handleTeam(e)}>Mumbai Indians</div>
@@ -79,14 +102,20 @@ function HeaderComponent(props) {
                       <div onClick={(e) => handleTeam(e)}>Rajasthan Royals</div>
                     </li>
                     <li>
-                      <div onClick={(e) => handleTeam(e)}>Royal Challengers Bangalore</div>
+                      <div onClick={(e) => handleTeam(e)}>
+                        Royal Challengers Bangalore
+                      </div>
                     </li>
                     <li>
-                      <div onClick={(e) => handleTeam(e)}>Sunrisers Hyderabad</div>
+                      <div onClick={(e) => handleTeam(e)}>
+                        Sunrisers Hyderabad
+                      </div>
                     </li>
                   </ul>
                 </DropDown>
               </li>
+              <li onClick={() => {handleMatches()}}> Matches </li>
+              {getToken && <li onClick={() => handleCreateTeam()}> Create a team </li>}
               <li> About Us </li>
               <li> Help </li>
             </ul>

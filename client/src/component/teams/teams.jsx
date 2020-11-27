@@ -16,6 +16,8 @@ function Teams(props) {
   }, [teamId]);
 
   const player = players[0];
+
+
   return (
     <div className="teams-section">
       <div className={`team-intro-main ${teamId}`}>
@@ -46,19 +48,26 @@ function Teams(props) {
           </div>
         </div>
       </div>
+      <div className="heading-team">
+        Squad
+      </div>
       <div className="teams-squad">
         {
           players.length &&
           player.map((item, key) => (
             <div key={key} className="player-profile">
-                  <div>
+                  <div className={`img-container ${teamId}`}>
                     <img src={item.url} className="player-img"/>
                   </div>    
                   <div className="text">
                     {item.name}
                   </div>    
                   <div className="text-stats">
-                    {item.stats}
+                    {
+                      item.stats.split("  ").map((i, key) => (
+                      <div className="each-stat">{i}</div>
+                      )) 
+                    }
                   </div> 
             </div>
           )) 

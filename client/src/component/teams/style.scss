@@ -4,49 +4,47 @@
   top: 0;
   z-index: -1;
 
-  background-position: 100% 0;
-  background-repeat: no-repeat;
-  background-size: auto 100%;
   margin-bottom: 30px;
   position: relative;
-
+  background-repeat: no-repeat;
+  background-size: cover;
   &.csk {
-    background: url("http://joshi24.myweb.cs.uwindsor.ca/static-img/background/csk.jpg");
+    background-image: url("http://joshi24.myweb.cs.uwindsor.ca/static-img/background/csk.jpg");
   }
 
   &.mi {
-    background: url("http://joshi24.myweb.cs.uwindsor.ca/static-img/background/mi.jpg");
+    background-image: url("http://joshi24.myweb.cs.uwindsor.ca/static-img/background/mi.jpg");
   }
 
   &.rr {
-    background: url("http://joshi24.myweb.cs.uwindsor.ca/static-img/background/rr.jpg");
+    background-image: url("http://joshi24.myweb.cs.uwindsor.ca/static-img/background/rr.jpg");
   }
 
   &.kxip {
-    background: url("http://joshi24.myweb.cs.uwindsor.ca/static-img/background/kxip.jpg");
+    background-image: url("http://joshi24.myweb.cs.uwindsor.ca/static-img/background/kxip.jpg");
   }
 
   &.srh {
-    background: url("http://joshi24.myweb.cs.uwindsor.ca/static-img/background/srh.jpg");
+    background-image: url("http://joshi24.myweb.cs.uwindsor.ca/static-img/background/srh.jpg");
   }
 
   &.rcb {
-    background: url("http://joshi24.myweb.cs.uwindsor.ca/static-img/background/rcb.jpg");
+    background-image: url("http://joshi24.myweb.cs.uwindsor.ca/static-img/background/rcb.jpg");
   }
 
   &.kkr {
-    background: url("http://joshi24.myweb.cs.uwindsor.ca/static-img/background/kkr.jpg");
+    background-image: url("http://joshi24.myweb.cs.uwindsor.ca/static-img/background/kkr.jpg");
   }
 
   &.dc {
-    background: url("http://joshi24.myweb.cs.uwindsor.ca/static-img/background/dc.jpg");
+    background-image: url("http://joshi24.myweb.cs.uwindsor.ca/static-img/background/dc.jpg");
   }
 }
 
 .background-seprator {
   width: 50%;
   border-right: 127px solid transparent;
-  
+
   .team-name {
     font-size: 40px;
     font-weight: bold;
@@ -55,15 +53,15 @@
   }
   .item-values {
     font-size: 14px;
-      color: white;
-  }  
+    color: white;
+  }
   &.csk {
     border-bottom: 600px solid rgba(207, 154, 20, 0.8);
     .team-name {
-        color: black;
+      color: black;
     }
     .item-values {
-        color: black;
+      color: black;
     }
   }
   &.mi {
@@ -98,47 +96,119 @@
     top: 50%;
     position: absolute;
     left: 3%;
+    width: 42%;
   }
 }
 
 .winner {
-    font-weight: bold;
-    &::before {
-        content: "";
-        background-position: -573px -279px;
-        background-image: url("http://joshi24.myweb.cs.uwindsor.ca/static-img/global-img.png");
-        background-repeat: no-repeat;
-        display: inline-block;
-        width: 12px;
-        height: 17px;
-        margin-right: 5px;
-        vertical-align: top;
-    }
+  font-weight: bold;
+  &::before {
+    content: "";
+    background-position: -573px -279px;
+    background-image: url("http://joshi24.myweb.cs.uwindsor.ca/static-img/global-img.png");
+    background-repeat: no-repeat;
+    display: inline-block;
+    width: 12px;
+    height: 17px;
+    margin-right: 5px;
+    vertical-align: top;
+  }
 }
 
 .item-values {
-    margin: 5px;
-    span {
-        font-weight: bold;
-        margin-left: 10px;
-    }
+  margin: 5px;
+  span {
+    font-weight: bold;
+    margin-left: 10px;
+  }
 }
 
-
-
 .teams-squad {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 
-    .text {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: bold;
-    }
+  .text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+  }
 }
 
 .player-profile {
-    margin: 20px;
+  margin: 20px;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px 0 rgba(0,0,0,.1);
+
+  transition: box-shadow .25s,transform .25s,-webkit-transform .25s;
+  &:hover {
+    box-shadow: 0 1px 10px 2px rgba(0,0,0,.2);
+    -webkit-transform: translateY(-1rem);
+    transform: translateY(-1rem);
+  }
+}
+
+.text-stats {
+  display: flex;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.each-stat {
+  padding: 5px;
+
+  padding-top: 0;
+  padding-bottom: 0;
+  &:nth-child(1) {
+    border-right: 1px solid black;
+  }
+
+  &:nth-child(2) {
+    border-right: 1px solid black;
+  }
+}
+
+.img-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px 6px 0 0;
+  background: linear-gradient(134deg, #fdb913, #f85c00);
+
+  &.dc {
+    background: linear-gradient(134deg, #004c93, #0358a7);
+  }
+
+  &.kxip {
+    background: linear-gradient(134deg, #aa4545, #740f0b);
+  }
+
+  &.kkr {
+    background: linear-gradient(134deg, #70458f, #3d2057);
+  }
+  &.mi {
+    background: linear-gradient(134deg,#005da0,#003a63);
+  }
+  &.rr {
+    background: linear-gradient(134deg,#2d4d9d,#172e5e);
+  }
+  &.rcb {
+    background: linear-gradient(134deg,#000,#464646);
+  }
+  &.srh {
+    background: linear-gradient(134deg,#fb643e,#b81c25);
+  }
+}
+
+
+
+
+.heading-team{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 100px 0;
+  font-size: 30px;
+  font-weight: bold;
 }

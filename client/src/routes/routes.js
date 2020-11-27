@@ -10,6 +10,9 @@ import ErrorPage404 from "../component/ErrorPage/errorPage404"
 import LandingPage from "../component/LandingPage/landingPage"
 import Cookies from "universal-cookie";
 import teamsContainer from "../container/teamsContainer";
+import CreateTeamContainer from "../container/createTeam";
+import MatchesContainer from "../container/MatchesContainer";
+
 const cookies = new Cookies();
 
 
@@ -17,7 +20,9 @@ const getHeaderFooter = (content) => {
     return (
         <Fragment>
             <HeaderComponent />
+            <div className="section-main-container">
                 {content}
+            </div>
             {/* <FooterComponent /> */}
         </Fragment>
     )
@@ -37,11 +42,13 @@ export const Routes = () => {
                             component={dashboardContainer}
                         />
                        
+                        <Route path="/matches" exact={true} component={MatchesContainer} />
+                        <ProtectedRoute path="/create-a-team"  component={CreateTeamContainer} />
+                        <ProtectedRoute path="/" exact={true} component={LandingPage} />
+                        <ProtectedRoute path="/teams/:team"  component={teamsContainer} />
                         {/* <Route path="/sign-up" exact={true} component={SignUpContainer} /> */}
                         {/* <Route path="/login" exact={true} component={LoginContainer} /> */}
                         {/* <Route component={ErrorPage404} /> */}
-                        <Route path="/" exact={true} component={LandingPage} />
-                        <Route path="/teams/:team"  component={teamsContainer} />
                     </Fragment>
                 )
             }

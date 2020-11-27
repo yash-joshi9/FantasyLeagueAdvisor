@@ -8,20 +8,21 @@ import { getUserById } from "../action/dashboard"
 function DashboardContainer(props) {
 
     const [isLoading, setisLoading] = useState(true);
-    useEffect(() => {
-        const { onGetUserById } = props;
-        const userId = cookies.get("userId");
-        onGetUserById(userId).then(() => {
-            setisLoading(false)
-        });
+    
+    // useEffect(() => {
+    //     const { onGetUserById } = props;
+    //     const userId = cookies.get("userId");
+    //     onGetUserById(userId).then(() => {
+    //         setisLoading(false)
+    //     });
 
-    }, [])
+    // }, [])
 
     return (
 
-        isLoading ?
-            ""
-            :
+        // isLoading ?
+            // ""
+            // :
             <Dashboard
                 {...props}
             // initialValues={{

@@ -18,7 +18,7 @@ var corsOptions = {
 }
 
 
-router.post("/teams", cors(corsOptions), auth, async (req,res) => {
+router.post("/teams", cors(corsOptions), async (req,res) => {
     try {
         const { teamName } = req.body;
         const team = await Team.find({name: teamName});

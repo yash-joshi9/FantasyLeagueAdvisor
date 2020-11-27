@@ -25,6 +25,9 @@ const playerSchema = new mongoose.Schema({
       required: false,
       trim: true
   }
+  // statistics: {
+
+  // }
 });
 
 playerSchema.methods.toJSON = function () {
