@@ -175,7 +175,26 @@
   justify-content: center;
   border-radius: 6px 6px 0 0;
   background: linear-gradient(134deg, #fdb913, #f85c00);
+  position: relative;
 
+  &.is-captain {
+    &::before {
+      content: "C";
+      font-weight: bold;
+      top: 10px;
+      left: 10px;
+      width: 20px;
+      height: 20px;
+      color: black;
+      border-radius: 50%;
+      display: flex;
+      text-align: center;
+      // align-items: center;
+      justify-content: center;
+      position: absolute;
+      background-color: white;
+    }
+  }
   &.dc {
     background: linear-gradient(134deg, #004c93, #0358a7);
   }

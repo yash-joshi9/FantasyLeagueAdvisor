@@ -56,7 +56,7 @@ function Teams(props) {
           players.length &&
           player.map((item, key) => (
             <div key={key} className="player-profile">
-                  <div className={`img-container ${teamId}`}>
+                  <div className={`img-container ${teamId} ${item.isCaptain ? "is-captain" : ""}`}>
                     <img src={item.url} className="player-img"/>
                   </div>    
                   <div className="text">
@@ -65,7 +65,7 @@ function Teams(props) {
                   <div className="text-stats">
                     {
                       item.stats.split("  ").map((i, key) => (
-                      <div className="each-stat">{i}</div>
+                      <div className="each-stat" key={key}>{i}</div>
                       )) 
                     }
                   </div> 

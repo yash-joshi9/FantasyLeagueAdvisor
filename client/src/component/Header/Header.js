@@ -53,18 +53,15 @@ function HeaderComponent(props) {
     history.push(`/teams/${teamName}`);
   };
 
-
-
   const handleCreateTeam = async (e) => {
     const { history } = props;
-    history.push("/create-a-team")
-  }
+    history.push("/create-a-team");
+  };
 
   const handleMatches = async (e) => {
     const { history } = props;
-    history.push("/matches")
-  }
-  
+    history.push("/matches");
+  };
 
   const getToken = cookies.get("authToken");
   return (
@@ -76,48 +73,67 @@ function HeaderComponent(props) {
           <div className="first-part-header">
             <ul className="list-part">
               <li onClick={handleHome}> Home </li>
-              { getToken &&
-              <li>
-                <DropDown name="Teams">
-                  <ul>
-                    <li>
-                      <div onClick={(e) => handleTeam(e)}>
-                        Chennai Super Kings
-                      </div>
-                    </li>
-                    <li>
-                      <div onClick={(e) => handleTeam(e)}>Delhi Capitals</div>
-                    </li>
-                    <li>
-                      <div onClick={(e) => handleTeam(e)}>Kings XI Punjab</div>
-                    </li>
-                    <li>
-                      <div onClick={(e) => handleTeam(e)}>
-                        Kolkata Knight Riders
-                      </div>
-                    </li>
-                    <li>
-                      <div onClick={(e) => handleTeam(e)}>Mumbai Indians</div>
-                    </li>
-                    <li>
-                      <div onClick={(e) => handleTeam(e)}>Rajasthan Royals</div>
-                    </li>
-                    <li>
-                      <div onClick={(e) => handleTeam(e)}>
-                        Royal Challengers Bangalore
-                      </div>
-                    </li>
-                    <li>
-                      <div onClick={(e) => handleTeam(e)}>
-                        Sunrisers Hyderabad
-                      </div>
-                    </li>
-                  </ul>
-                </DropDown>
-              </li>
-              }
-              <li onClick={() => {handleMatches()}}> Matches </li>
-              {getToken && <li onClick={() => handleCreateTeam()}> Create a team </li>}
+              {getToken && (
+                <Fragment>
+                  <li>
+                    <DropDown name="Teams">
+                      <ul>
+                        <li>
+                          <div onClick={(e) => handleTeam(e)}>
+                            Chennai Super Kings
+                          </div>
+                        </li>
+                        <li>
+                          <div onClick={(e) => handleTeam(e)}>
+                            Delhi Capitals
+                          </div>
+                        </li>
+                        <li>
+                          <div onClick={(e) => handleTeam(e)}>
+                            Kings XI Punjab
+                          </div>
+                        </li>
+                        <li>
+                          <div onClick={(e) => handleTeam(e)}>
+                            Kolkata Knight Riders
+                          </div>
+                        </li>
+                        <li>
+                          <div onClick={(e) => handleTeam(e)}>
+                            Mumbai Indians
+                          </div>
+                        </li>
+                        <li>
+                          <div onClick={(e) => handleTeam(e)}>
+                            Rajasthan Royals
+                          </div>
+                        </li>
+                        <li>
+                          <div onClick={(e) => handleTeam(e)}>
+                            Royal Challengers Bangalore
+                          </div>
+                        </li>
+                        <li>
+                          <div onClick={(e) => handleTeam(e)}>
+                            Sunrisers Hyderabad
+                          </div>
+                        </li>
+                      </ul>
+                    </DropDown>
+                  </li>
+                  <li
+                    onClick={() => {
+                      handleMatches();
+                    }}
+                  >
+                    {" "}
+                    Matches{" "}
+                  </li>
+                </Fragment>
+              )}
+              {getToken && (
+                <li onClick={() => handleCreateTeam()}> Create a team </li>
+              )}
               <li> About Us </li>
               <li> Help </li>
             </ul>

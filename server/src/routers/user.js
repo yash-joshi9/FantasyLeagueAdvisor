@@ -37,7 +37,13 @@ var corsOptions = {
 
 router.post("/users", cors(corsOptions), async (req, res) => {
 
-  const user = new User(req.body);
+  let {name, email, phoneNumber, password } = req.body;
+  
+  password = (Buffer.from(password, 'base64').toString());
+  
+  const data = {name, email, phoneNumber, password}
+  const user = new User(data);
+
   try {
     const email = req.body.email;
     const isUser = await User.findOne({email});
@@ -57,9 +63,15 @@ router.post("/users", cors(corsOptions), async (req, res) => {
 router.post("/users/login", cors(corsOptions), async (req, res) => {
   try {
     console.log(req.body);
+    let {email, password } = req.body;
+    
+    password = (Buffer.from(password, 'base64').toString());
+    
+    console.log(email, password)
+
     const user = await User.findByCredentials(
       req.body.email,
-      req.body.password
+      password
     );
     const token = await user.generateAuthToken();
     res.status(200).send({ user, token });

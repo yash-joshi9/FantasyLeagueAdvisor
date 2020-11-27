@@ -24,10 +24,12 @@ const playerSchema = new mongoose.Schema({
       type: String,
       required: false,
       trim: true
+  },
+  isCaptain: {
+    type: Boolean,
+    required: false,
+    trim: true
   }
-  // statistics: {
-
-  // }
 });
 
 playerSchema.methods.toJSON = function () {

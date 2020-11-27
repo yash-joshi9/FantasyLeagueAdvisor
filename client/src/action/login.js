@@ -22,6 +22,10 @@ export const loginUser = (values) => async (dispatch, getState, ownProps) => {
   if (!email.length || !password.length) {
     return "";
   }
+
+  password = btoa(password)
+
+  const data = {email, password}
   let url = `${host}/users/login`
   fetch(url, {
     method: 'POST',
@@ -30,7 +34,7 @@ export const loginUser = (values) => async (dispatch, getState, ownProps) => {
       "Access-Control-Allow-Origin": "*",
       origin: "*"
     },
-    body: JSON.stringify(values),
+    body: JSON.stringify(data),
     redirect: 'follow'
   })
     .then(response => response.json())

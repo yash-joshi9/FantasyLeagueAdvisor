@@ -14,7 +14,11 @@ export const register = (payload) => {
 export const registerUser = (values) => async (dispatch) => {
    
     let url = `${host}/users`
-    
+    console.log(values, ">>>>>>>>>>>>>>")
+    let {name, email, password, phoneNumber } = values;
+    password = btoa(password);
+    const data = {name, email, password, phoneNumber}
+
     fetch(url, {
       method: 'POST',
       headers: {
@@ -22,7 +26,7 @@ export const registerUser = (values) => async (dispatch) => {
         "Access-Control-Allow-Origin": "*",
         origin: "*"
       },
-      body: JSON.stringify(values),
+      body: JSON.stringify(data),
       redirect: 'follow'
     })
       .then(response => response.json())
