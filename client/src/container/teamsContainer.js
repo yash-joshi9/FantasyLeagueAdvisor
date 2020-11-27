@@ -28,6 +28,7 @@ class TeamsContainer extends Component {
     const {
       details
     } = this.props;
+    console.log(">>>>>>>>>>>>>>>>")
 
     return !details.length ? <Loader /> : <Teams {...this.props} />;
   }

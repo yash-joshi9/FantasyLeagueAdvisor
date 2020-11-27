@@ -76,8 +76,9 @@ function HeaderComponent(props) {
           <div className="first-part-header">
             <ul className="list-part">
               <li onClick={handleHome}> Home </li>
+              { getToken &&
               <li>
-                <DropDown>
+                <DropDown name="Teams">
                   <ul>
                     <li>
                       <div onClick={(e) => handleTeam(e)}>
@@ -114,6 +115,7 @@ function HeaderComponent(props) {
                   </ul>
                 </DropDown>
               </li>
+              }
               <li onClick={() => {handleMatches()}}> Matches </li>
               {getToken && <li onClick={() => handleCreateTeam()}> Create a team </li>}
               <li> About Us </li>

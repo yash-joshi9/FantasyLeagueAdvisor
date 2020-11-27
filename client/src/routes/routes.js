@@ -44,7 +44,7 @@ export const Routes = () => {
                        
                         <Route path="/matches" exact={true} component={MatchesContainer} />
                         <ProtectedRoute path="/create-a-team"  component={CreateTeamContainer} />
-                        <ProtectedRoute path="/" exact={true} component={LandingPage} />
+                        <Route path="/" exact={true} component={LandingPage} />
                         <ProtectedRoute path="/teams/:team"  component={teamsContainer} />
                         {/* <Route path="/sign-up" exact={true} component={SignUpContainer} /> */}
                         {/* <Route path="/login" exact={true} component={LoginContainer} /> */}

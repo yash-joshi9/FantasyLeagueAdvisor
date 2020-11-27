@@ -10,15 +10,20 @@ import cookies from "../cookie/cookie"
 
 class HeaderContainer extends Component {
   state = {
-    isLoading: true,
+    isLoading: false,
   };
 
-  componentDidMount() {
+  async componentDidMount() {
     const { onGetUserById } = this.props;
     const userId = cookies.get("userId");
-    onGetUserById(userId).then(() => {
+    const authToken = cookies.get("userId");
+
+    if(authToken) {
+      this.setState({isLoading: true})
+      await onGetUserById(userId).then(() => {
         this.setState({isLoading: false});
-    });
+      });
+    }
 }
 
 render() {
