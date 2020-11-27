@@ -5,6 +5,8 @@ import Header from "../component/Header/Header";
 import { withRouter } from "react-router"
 import { logout } from "../action/login"
 import { handleShowLoginSignUp } from "../action/dashboard";
+import { getTeamDetailsByName } from "../action/team";
+
 
 
 class HeaderContainer extends Component {
@@ -40,7 +42,8 @@ const mapDispatchToProps = (dispatch) => {
         dispatch,
         ...bindActionCreators({
             onLogout: logout,
-            onHandleShowLoginSignUp: handleShowLoginSignUp
+            onHandleShowLoginSignUp: handleShowLoginSignUp,
+            onGetTeamDetailsByName: getTeamDetailsByName
         },
             dispatch)
     }

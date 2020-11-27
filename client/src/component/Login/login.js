@@ -68,10 +68,6 @@ function Login(props) {
                 </div>
                 <div class="thumbnail__links">
                 <ul class="list-inline m-b-0 text-center">
-                    {/* <li><a href="http://alexdevero.com/" target="_blank"><i class="fa fa-globe"></i></a></li>
-                    <li><a href="https://www.behance.net/alexdevero" target="_blank"><fa class="fa fa-behance"></fa></a></li>
-                    <li><a href="https://github.com/alexdevero" target="_blank"><i class="fa fa-github"></i></a></li>
-                    <li><a href="https://twitter.com/alexdevero" target="_blank"><i class="fa fa-twitter"></i></a></li> */}
                 </ul>
                 </div>
                 <div class="signup__overlay"></div>
@@ -97,6 +93,8 @@ function Login(props) {
                     </ul>
                 </div>
                 </form>  
+                {error && <strong>{error}</strong>}
+                {loginError && <strong>{loginError}</strong>}
             </div>
             </div>
 

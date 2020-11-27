@@ -9,6 +9,7 @@ import dashboardContainer from "../container/dashboardContainer";
 import ErrorPage404 from "../component/ErrorPage/errorPage404"
 import LandingPage from "../component/LandingPage/landingPage"
 import Cookies from "universal-cookie";
+import teamsContainer from "../container/teamsContainer";
 const cookies = new Cookies();
 
 
@@ -17,7 +18,7 @@ const getHeaderFooter = (content) => {
         <Fragment>
             <HeaderComponent />
                 {content}
-            <FooterComponent />
+            {/* <FooterComponent /> */}
         </Fragment>
     )
 }
@@ -40,6 +41,7 @@ export const Routes = () => {
                         {/* <Route path="/login" exact={true} component={LoginContainer} /> */}
                         {/* <Route component={ErrorPage404} /> */}
                         <Route path="/" exact={true} component={LandingPage} />
+                        <Route path="/teams/:team"  component={teamsContainer} />
                     </Fragment>
                 )
             }

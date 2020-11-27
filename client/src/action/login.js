@@ -35,7 +35,12 @@ export const loginUser = (values) => async (dispatch, getState, ownProps) => {
   })
     .then(response => response.json())
     .then(result => {
-      const { token, user, error, user :{ _id }} = result;
+      const { error } = result;
+      if (error) {
+        return dispatch(errorLogin({ loginError: error }))
+      } 
+      
+      const { token, user, user :{ _id }} = result;
       const getToken = cookies.get("authToken")
 
       if (getToken == undefined) {
@@ -43,14 +48,9 @@ export const loginUser = (values) => async (dispatch, getState, ownProps) => {
         cookies.set("userId", _id)
       }
 
-      if (error) {
-        dispatch(errorLogin({ loginError: error }))
-      } else {
         const data = { ...user, userId: user._id }
         dispatch(login(data))
         window.location.href = "/dashboard"; 
-      }
-
     }).catch(error => {
       console.log(error);
     });

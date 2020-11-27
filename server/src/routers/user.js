@@ -1,12 +1,15 @@
 const express = require("express");
 const User = require("../models/User");
+const Player = require("../models/Players");
+
 const auth = require("../middleware/auth");
-var cors = require('cors')
+const players = require("../allplayers");
+
+var cors = require('cors');
+const Team = require("../models/Teams");
 
 var app = express();
 app.use(cors())
-
-
 
 const router = new express.Router();
 
@@ -17,6 +20,21 @@ var corsOptions = {
   "Access-Control-Allow-Headers": "*",
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
+
+// try {
+  
+//  const eachTeam = players.players;
+
+//  eachTeam.forEach(async function(t) {
+//   const player = new Player(t)
+//   await player.save()
+// }); 
+// } catch {
+
+// }
+
+
+
 router.post("/users", cors(corsOptions), async (req, res) => {
 
   const user = new User(req.body);

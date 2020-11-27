@@ -10,27 +10,11 @@ function Dashboard(props) {
     const { name, email, phoneNumber } = props;
     return (
         <div className="dashboard-section">
-            <div className="text">
-                hello: {name}
-            </div>
-            <div>
-                email: {email}
-            </div>
-            <div>
-                phone: {phoneNumber}
-            </div>
-
-            <button onClick={() => setisOpen(true)}>
-                Modal Open
-            </button>
-
-            <div>
-                <Modal
-                    open={isOpen}
-                    onClose={() => setisOpen(false)}
-                >
-                    FROM MODAL CLASS
-                </Modal>
+            <div className="background-wrapper" />
+            <div className="section-main-start">
+                <div className="greet-msg">
+                    Hello, {name}
+                </div>
             </div>
         </div>
     );

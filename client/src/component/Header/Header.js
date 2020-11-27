@@ -1,74 +1,119 @@
-import React, { Component, Fragment } from "react";
+import React, { Component, Fragment, useEffect, useState } from "react";
 import { withRouter } from "react-router";
 import LoginSignUpModal from "../login-signup-modal/loginSignUpModal";
 import "./style.scss";
-
+import cookies from "../../cookie/cookie";
+import DropDown from "../dropdown/dropdown";
 
 function HeaderComponent(props) {
-    const handleHome = () => {
-        const { history } = props;
-        history.push("/");
+  const handleHome = () => {
+    const { history } = props;
+    const getToken = cookies.get("authToken");
+    if (getToken) {
+      history.push("/dashboard");
+    } else {
+      history.push("/");
     }
+  };
 
-    const handleSignIn = () => {
-        const { history } = props;
-        history.push("/sign-up");
-    }
+  const handleSignIn = () => {
+    const { history } = props;
+    history.push("/sign-up");
+  };
 
-    const handleLogin = () => {
-        const { history } = props;
-        history.push("/login");
-    }
+  const handleLogin = () => {
+    const { history } = props;
+    history.push("/login");
+  };
 
-    const handleLogout = () => {
-        const { onLogout } = props;
-        onLogout();
-    }
+  const handleLogout = () => {
+    const { onLogout } = props;
+    onLogout();
+  };
 
+  const { isLogin, onIsShowLoginSignUp, onHandleShowLoginSignUp, onGetTeamDetailsByName } = props;
+  
+  const [scroll, setScroll] = useState(false);
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      setScroll(window.scrollY > 50);
+    });
+  }, []);
 
-    const { isLogin, onIsShowLoginSignUp, onHandleShowLoginSignUp } = props;
+  const handleTeam = async (e) => {
+    const teamName = e.currentTarget.textContent
+    const { history } = props;
+    await onGetTeamDetailsByName(teamName)
 
-    return (
-        <div className="header-main">
-            <div className="title-part">
-                Dream 11 Advisor
-                </div>
-            <div className="header-container">
-                <div className="logo-part">
-                    Dream
-                    </div>
-                <div className="header-list-part">
-                    <div className="first-part-header">
-                        <ul className="list-part">
-                            <li onClick={handleHome}> Home </li>
-                            <li> About Us </li>
-                            <li> Help </li>
+    history.push(`/teams/${teamName}`)
+  }
 
-                        </ul>
-                    </div>
-                    <div className="sec-part-header">
-                        <ul className="list-part">
-                            {
-                                isLogin ?
-                                    <li onClick={handleLogout}> Log Out </li>
-                                    :
-                                    <Fragment>
-
-                                        <li onClick={() => onHandleShowLoginSignUp(true)}> Login/Sign-Up </li>
-                                        <LoginSignUpModal
-                                            onIsShowLoginSignUp={onIsShowLoginSignUp}
-                                            onHandleShowLoginSignUp={onHandleShowLoginSignUp}
-                                        />
-                                        {/* <li onClick={handleLogin}> Login </li> */}
-                                    </Fragment>
-                            }
-
-                        </ul>
-                    </div>
-                </div>
-            </div>
+  return (
+    <div className="header-main">
+      <div className="title-part">Fantasy League Advisor</div>
+      <div className={`header-container  ${scroll ? "is-scrolled" : ""}`}>
+        <div className="logo-part">FLA</div>
+        <div className="header-list-part">
+          <div className="first-part-header">
+            <ul className="list-part">
+              <li onClick={handleHome}> Home </li>
+              <li>
+                <DropDown>
+                  <ul>
+                    <li>
+                      <div onClick={(e) => handleTeam(e)}>Chennai Super Kings</div>
+                    </li>
+                    <li>
+                      <div onClick={(e) => handleTeam(e)}>Delhi Capitals</div>
+                    </li>
+                    <li>
+                      <div onClick={(e) => handleTeam(e)}>Kings XI Punjab</div>
+                    </li>
+                    <li>
+                      <div onClick={(e) => handleTeam(e)}>Kolkata Knight Riders</div>
+                    </li>
+                    <li>
+                      <div onClick={(e) => handleTeam(e)}>Mumbai Indians</div>
+                    </li>
+                    <li>
+                      <div onClick={(e) => handleTeam(e)}>Rajasthan Royals</div>
+                    </li>
+                    <li>
+                      <div onClick={(e) => handleTeam(e)}>Royal Challengers Bangalore</div>
+                    </li>
+                    <li>
+                      <div onClick={(e) => handleTeam(e)}>Sunrisers Hyderabad</div>
+                    </li>
+                  </ul>
+                </DropDown>
+              </li>
+              <li> About Us </li>
+              <li> Help </li>
+            </ul>
+          </div>
+          <div className="sec-part-header">
+            <ul className="list-part">
+              {isLogin ? (
+                <li onClick={handleLogout}> Log Out </li>
+              ) : (
+                <Fragment>
+                  <li onClick={() => onHandleShowLoginSignUp(true)}>
+                    {" "}
+                    Login/Sign-Up{" "}
+                  </li>
+                  <LoginSignUpModal
+                    onIsShowLoginSignUp={onIsShowLoginSignUp}
+                    onHandleShowLoginSignUp={onHandleShowLoginSignUp}
+                  />
+                  {/* <li onClick={handleLogin}> Login </li> */}
+                </Fragment>
+              )}
+            </ul>
+          </div>
         </div>
-    );
+      </div>
+    </div>
+  );
 }
 
 export default withRouter(HeaderComponent);

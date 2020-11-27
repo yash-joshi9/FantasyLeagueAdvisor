@@ -3,13 +3,18 @@ const express = require("express");
 const app = express();
 
 require("./db/mongoose");
-const User = require("./models/User");
 const userRouter = require("./routers/user");
+const playerRouter = require("./routers/player");
+const teamRouter = require("./routers/teams");
+
 
 const port = process.env.PORT || 3000;
 app.use(express.static(path.join(__dirname, "../public")));
 app.use(express.json());
 app.use(userRouter);
+app.use(playerRouter)
+app.use(teamRouter)
+
 
 console.log(">>>>>>")
 app.listen(port, () => {
