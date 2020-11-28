@@ -1,20 +1,18 @@
 const init = {
-    matchDetails: [],
-}
-
+  matchDetails: [],
+captains: []
+};
 
 const match = (state = init, action) => {
-
-
-    switch (action.type) {
-        case "SET_MATCH":
-            return {
-                ...state,
-                matchDetails: [action.payload]
-            }
-        default:
-            return state
-    }
-}
+  switch (action.type) {
+    case "SET_MATCH":
+      return {
+        ...state,
+        matchDetails: [...action.payload]
+      };
+    default:
+      return state;
+  }
+};
 
 export default match;

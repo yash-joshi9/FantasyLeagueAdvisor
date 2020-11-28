@@ -4,14 +4,14 @@ import CreateTeam from "../component/createTeam/createTeam"
 import { bindActionCreators } from "redux"
 import cookies from "../cookie/cookie";
 import { getUserById } from "../action/dashboard"
+import { handleSelectedTeam, handleSelectedTeamTwo, getRandomPlayersOfMatch } from "../action/team";
 
 function createTeamContainer(props) {
 
     return (
-
-            <CreateTeam
-                {...props}
-            />
+        <CreateTeam
+            {...props}
+        />
     );
 }
 
@@ -19,10 +19,26 @@ function createTeamContainer(props) {
 
 const mapStateToProps = (state) => {
     const {
-        user
+        user,
+        team: {
+            selectedTeam,
+            selectedTeam2,
+            allTeams,
+            fetchedTeam,
+            teamError
+        },
+        team: {
+            suggestedTeam
+        }
     } = state
     return {
-        ...user
+        ...user,
+        suggestedTeam,
+        selectedTeam,
+        selectedTeam2,
+        allTeams,
+        teamError,
+        fetchedTeam
     }
 }
 
@@ -30,7 +46,10 @@ const mapDispatchToProps = (dispatch) => {
     return {
         dispatch,
         ...bindActionCreators({
-            onGetUserById: getUserById
+            onGetUserById: getUserById,
+            onHandleSelectedTeam:  handleSelectedTeam,
+            onHandleSelectedTeamTwo: handleSelectedTeamTwo,
+            onGetRandomPlayersOfMatch: getRandomPlayersOfMatch
         },
             dispatch)
     }

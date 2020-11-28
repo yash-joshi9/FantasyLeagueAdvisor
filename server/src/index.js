@@ -7,6 +7,8 @@ const userRouter = require("./routers/user");
 const playerRouter = require("./routers/player");
 const teamRouter = require("./routers/teams");
 const matchRouter = require("./routers/match");
+const SuggestedTeamRouter = require("./routers/suggestedTeam")
+
 
 const port = process.env.PORT || 3000;
 app.use(express.static(path.join(__dirname, "../public")));
@@ -17,7 +19,7 @@ app.use(userRouter);
 app.use(playerRouter)
 app.use(teamRouter)
 app.use(matchRouter)
-
+app.use(SuggestedTeamRouter)
 
 
 console.log(">>>>>>")

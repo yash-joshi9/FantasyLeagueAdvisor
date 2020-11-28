@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./style.scss";
 import { useDetectOutsideClick } from "../useDetectOutsideClick";
 
@@ -6,9 +6,13 @@ import { useDetectOutsideClick } from "../useDetectOutsideClick";
 export default function DropDown(props) {
   const dropdownRef = useRef(null);
   const [isActive, setIsActive] = useDetectOutsideClick(dropdownRef, false);
-  const onClick = () => setIsActive(!isActive);
+  
 
+  const onClick = (e) => {
+    setIsActive(!isActive);
+  }
   const { name, children } = props;
+
   return (
     <div className="container">
       <div className="menu-container">

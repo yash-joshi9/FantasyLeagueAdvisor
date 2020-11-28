@@ -26,8 +26,9 @@ export const getMatchDetails = (teamName) => async (dispatch) => {
       redirect: "follow",
     })
       .then((res) => res.json())
-      .then((result) => {
-        return dispatch(setMatch(result));
+      .then(async (result) => {
+        await dispatch(setMatch(result));
+        return
       })
       .catch((e) => {
         console.log(e, ">>>>error");

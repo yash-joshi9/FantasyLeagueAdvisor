@@ -5,6 +5,7 @@ import dashboard from "./dashboard"
 import match from "./match";
 import {reducer  as formReducer} from "redux-form";
 
+
 const allReducers = combineReducers({
     user,
     team,

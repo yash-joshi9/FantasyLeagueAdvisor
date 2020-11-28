@@ -59,6 +59,8 @@
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
+    cursor: pointer;
+    z-index: 9;
   }
   
   .menu ul {

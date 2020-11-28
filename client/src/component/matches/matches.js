@@ -1,32 +1,30 @@
 import React, { Component } from "react";
 import "./style.scss";
+import PlayerProfile from "../teams/playerProfile";
 
 function Matches(props) {
-  
-    const { matchDetails } = props;
-    return (
-        <div className="Matches-container">
-            {
-                matchDetails[0].map((item, key) => (
-                    <div key={key} className="each-match">
-                        <div>
-                            {item.teamA} Vs {item.teamB}
-                        </div>
-                        <div>
-                            VS
-                        </div>
-                        <div>
-                            {item.matchNumber}
-                        </div>
-                        <div>
-                            {item.venue}
-                        </div>
-                    </div>
-                ))
-            }
-        </div>
-    )
+  const { matchDetails, captain } = props;
 
+  return (
+    <div className="Matches-container">
+      {matchDetails.map((item, key) => (
+        <div key={key} className="each-match">
+          <div className="captains-profile">
+            {captain.map((item, key) => (
+              <PlayerProfile
+                key={key}
+                item={item}
+                teamId="csk"
+                isMatch={true}
+              />
+            ))}
+          </div>
+          <div className="match-number">{item.matchNumber}</div>
+          <div className="match-venue">{item.venue}</div>
+        </div>
+      ))}
+    </div>
+  );
 }
 
 export default Matches;

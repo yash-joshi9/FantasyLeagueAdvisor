@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import "./style.scss";
+import PlayerProfile from "./playerProfile";
 
 function Teams(props) {
   const { details, onGetPlayers, players} = props;
@@ -55,21 +56,27 @@ function Teams(props) {
         {
           players.length &&
           player.map((item, key) => (
-            <div key={key} className="player-profile">
-                  <div className={`img-container ${teamId} ${item.isCaptain ? "is-captain" : ""}`}>
-                    <img src={item.url} className="player-img"/>
-                  </div>    
-                  <div className="text">
-                    {item.name}
-                  </div>    
-                  <div className="text-stats">
-                    {
-                      item.stats.split("  ").map((i, key) => (
-                      <div className="each-stat" key={key}>{i}</div>
-                      )) 
-                    }
-                  </div> 
-            </div>
+            <PlayerProfile 
+              key={key}
+              item={item}
+              teamId={teamId}
+              isMatch={false}
+            />
+            // <div key={key} className="player-profile">
+            //       <div className={`img-container ${teamId} ${item.isCaptain ? "is-captain" : ""}`}>
+            //         <img src={item.url} className="player-img"/>
+            //       </div>    
+            //       <div className="text">
+            //         {item.name}
+            //       </div>    
+            //       <div className="text-stats">
+            //         {
+            //           item.stats.split("  ").map((i, key) => (
+            //           <div className="each-stat" key={key}>{i}</div>
+            //           )) 
+            //         }
+            //       </div> 
+            // </div>
           )) 
 
         }

@@ -34,6 +34,11 @@ const teamSchema = new mongoose.Schema({
         type: String,
         required: false,
         trim: true
+    },
+    teamId: {
+        type: String,
+        required: false,
+        trim: true 
     }
 });
 

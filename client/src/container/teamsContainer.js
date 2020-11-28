@@ -35,11 +35,12 @@ class TeamsContainer extends Component {
 
 const mapStateToProps = (state) => {
   const {
-    team: { details, players },
+    team: { details, players, suggestedTeam },
   } = state;
   return {
     details,
-    players
+    players,
+    suggestedTeam
   };
 };
 
