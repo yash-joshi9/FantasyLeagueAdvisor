@@ -14,7 +14,8 @@ function Matches(props) {
               <PlayerProfile
                 key={key}
                 item={item}
-                teamId="csk"
+                teamId={item.team}
+                showTeamName={true}
                 isMatch={true}
               />
             ))}

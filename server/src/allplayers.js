@@ -5,7 +5,8 @@ const teams = [
         coach :"Stephen Fleming",
         venue: "M. A. Chidambaram Stadium",
         captain: "MS Dhoni",
-        winners: "2010, 2011, 2018"
+        winners: "2010, 2011, 2018",
+        teamId: "csk"
     },
     {
         name: " Delhi Capitals",
@@ -13,8 +14,8 @@ const teams = [
         coach: "Ricky Ponting",
         venue: "Feroz Shah Kotla Ground",
         captain: "Shreyas Iyer",
-        winners: ""
-
+        winners: "",
+        teamId: "dc"
     },
     {
         name: "Kings XI Punjab",
@@ -22,7 +23,8 @@ const teams = [
         coach: "Anil Kumble",
         venue: "IS Bindra Stadium",
         captain: "K L Rahul",
-        winners: ""
+        winners: "",
+        teamId: "kxip"
     },
     {
         name: "Kolkata Knight Riders",
@@ -30,7 +32,8 @@ const teams = [
         owner: "Knight Riders Sports Private Ltd",
         coach: "Brendon McCullum",
         venue: "Eden Gardens",
-        captain: "Eoin Morgan"
+        captain: "Eoin Morgan",
+        teamId: "kkr"
     },
     {
         name: "Mumbai Indians",
@@ -38,7 +41,8 @@ const teams = [
         owner: "Indiawin Sports Pvt. Ltd",
         coach: "Mahela Jayawardene",
         venue: "Wankhede Stadium",
-        captain: "Rohit Sharma"
+        captain: "Rohit Sharma",
+        teamId: "mi"
     },
     {
         name: "Rajasthan Royals",
@@ -46,7 +50,8 @@ const teams = [
         owner: "Royal Multisport Pvt. Ltd",
         coach: "Andrew McDonald",
         venue: "Sawai Mansingh Stadium",
-        captain: "Steve Smith"
+        captain: "Steve Smith",
+        teamId: "rr"
     },
     {
         name: "Royal Challengers Bangalore",
@@ -54,7 +59,8 @@ const teams = [
         coach: "Simon Katich",
         venue: "M. Chinnaswamy Stadium",
         captain: "Virat Kohli",
-        winners: ""
+        winners: "",
+        teamId: "rcb"
     },
     {
         name: "Sunrisers Hyderabad",
@@ -62,7 +68,8 @@ const teams = [
         owner: "SUN TV Network",
         coach: "Trevor Bayliss",
         venue: "Rajiv Gandhi Intl. Cricket Stadium",
-        captain: "David Warner"
+        captain: "David Warner",
+        teamId: "srh"
     }
 ];
 

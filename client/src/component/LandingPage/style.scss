@@ -7,6 +7,20 @@
     background-repeat: no-repeat;
     top: 0;
     z-index: -1;
+    .intro-main {
+        height: 100%;
+        padding-top: 12rem;
+        opacity: 0.8;
+        font-size: 1.75rem;
+        font-weight: bold;
+        color: white;
+        max-width: 50%;
+        text-align: center;
+        padding-left: 4rem;
+        font-family: 'Dancing Script', cursive;
+        text-align: left;
+        .title2 {
+            padding-top: 1rem;
+        }
+    }
 }
-
-

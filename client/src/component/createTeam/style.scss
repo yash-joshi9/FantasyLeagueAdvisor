@@ -58,8 +58,12 @@
     width: 245px;
     border: 1px solid gray;
     border-radius: 6px;
-    padding: 10px;
     position: relative;
+    .menu-container {
+      .menu-trigger {
+        padding: 10px;
+      }
+    }
 
     &::after {
       content: "";

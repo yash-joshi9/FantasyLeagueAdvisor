@@ -12,9 +12,6 @@ class LoginContainer extends Component {
         return (
             <Login
                 {...this.props}
-            // initialValues={{
-            //     firstName: "abcd"
-            // }}
             />
         );
     }

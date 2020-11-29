@@ -156,6 +156,7 @@ label {
   color: #fff;
   background: #111;
   border-radius: remy(35px);
+  cursor: pointer;
   &:focus,
   &:hover {
     background: lighten(#111, 13%);
@@ -166,6 +167,7 @@ label {
   font-weight: 600;
   text-decoration: underline;
   color: #999;
+  cursor: pointer;
   &:focus,
   &:hover {
     color: darken(#999, 13%);

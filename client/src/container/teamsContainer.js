@@ -7,8 +7,7 @@ import { getTeamDetailsByName, getPlayers } from "../action/team";
 
 class TeamsContainer extends Component {
 
-
-    async componentDidMount() {
+  async componentDidMount() {
         const {
             details,
             match: {

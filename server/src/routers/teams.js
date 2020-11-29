@@ -1,5 +1,6 @@
 const express = require("express");
 const auth = require("../middleware/auth");
+const players = require("../allplayers");
 
 var cors = require('cors');
 const Team = require("../models/Teams");
@@ -17,6 +18,18 @@ var corsOptions = {
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
 
+
+// try {
+  
+//  const eachTeam = players.teams;
+
+//  eachTeam.forEach(async function(t) {
+//   const player = new Team(t)
+//   await player.save()
+// }); 
+// } catch {
+
+// }
 
 router.post("/teams", cors(corsOptions), async (req,res) => {
     try {

@@ -12,6 +12,17 @@ var app = express();
 app.use(cors())
 
 const router = new express.Router();
+const winston = require("winston")
+
+const logger = winston.createLogger({
+  level: 'info',
+  format: winston.format.json(),
+  defaultMeta: { service: 'user-service' },
+  transports: [
+    new winston.transports.File({ filename: 'combined.log' }),
+  ],
+});
+
 
 
 var corsOptions = {
@@ -21,6 +32,7 @@ var corsOptions = {
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
 
+//add players to db
 // try {
   
 //  const eachTeam = players.players;
@@ -34,6 +46,18 @@ var corsOptions = {
 // }
 
 
+// try {
+  
+//  const eachTeam = players.teams;
+
+//  console.log(eachTeam)
+//  eachTeam.forEach(async function(t) {
+//   const team = new Team(t)
+//   await team.save()
+// }); 
+// } catch {
+
+// }
 
 router.post("/users", cors(corsOptions), async (req, res) => {
 
@@ -51,6 +75,10 @@ router.post("/users", cors(corsOptions), async (req, res) => {
     if(isUser) {
       return res.status(200).send({ error: "Already registered" })
     }
+    logger.log({
+      level: "info",
+      message: {time: Date.now(), User: email}
+    });
     await user.save();
     const token = await user.generateAuthToken();
     res.status(201).send({ user, token });
@@ -67,8 +95,6 @@ router.post("/users/login", cors(corsOptions), async (req, res) => {
     
     password = (Buffer.from(password, 'base64').toString());
     
-    console.log(email, password)
-
     const user = await User.findByCredentials(
       req.body.email,
       password

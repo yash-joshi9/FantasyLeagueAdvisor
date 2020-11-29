@@ -25,7 +25,6 @@ router.post("/players/suggest", cors(corsOptions), async (req, res) => {
   try {
     const { teamA, teamB, _id } = req.body;
 
-    console.log(_id)
     const teamidA = await Team.find({ name: teamA }, { teamId: 1 });
     const teamidB = await Team.find({ name: teamB }, { teamId: 1 });
 
@@ -36,13 +35,9 @@ router.post("/players/suggest", cors(corsOptions), async (req, res) => {
     
 
     team.forEach(async function (t) {
-      const st = new SuggestedTeam({...t, matchNumber: "Match 45", userId:""});
+      const st = new SuggestedTeam({...t, matchNumber: "Match 45", userId: _id});
       await st.save();
     });
-
-    // console.log(team);
-    // const suggestedTeam = new SuggestedTeam(team[0]);
-    // suggestedTeam.save();
 
     return res.status(200).send(team);
   } catch (error) {

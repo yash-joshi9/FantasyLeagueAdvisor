@@ -45,6 +45,13 @@ const setError = (payload) => {
   };
 };
 
+const setLoading = (payload) => {
+  return {
+    type: "TEAM_LOADING",
+    payload,
+  };
+};
+
 export const getTeamDetailsByName = (teamName) => async (dispatch) => {
   let url = `${host}/teams`;
   const data = { teamName };
@@ -75,6 +82,7 @@ export const getTeamDetailsByName = (teamName) => async (dispatch) => {
 export const getPlayers = (teamName) => async (dispatch) => {
   let url = `${host}/players`;
   const data = { teamName };
+
   const token = cookies.get("authToken");
   try {
     await fetch(url, {

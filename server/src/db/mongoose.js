@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-mongoose.connect("mongodb://127.0.0.1:27017/Fantasy-League", {
+mongoose.connect("mongodb+srv://YashWindsor:Windsor12345@cluster0.emgoq.mongodb.net/Fantasy-League", {
   useNewUrlParser: true,
   useCreateIndex: true,
   useUnifiedTopology: true

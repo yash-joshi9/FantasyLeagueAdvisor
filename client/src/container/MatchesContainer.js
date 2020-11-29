@@ -9,21 +9,33 @@ import Loader from "../component/Loader/Loading";
 import { getTeamCaptain } from "../action/team";
 
 function MatchesContainer(props) {
-  const { onGetMatchDetails, onGetTeamCaptain, matchDetails } = props;
+  const { onGetMatchDetails, onGetTeamCaptain, matchDetails, captain } = props;
   const [isLoading, setisLoading] = useState(true);
 
   useEffect(() => {
     if(!matchDetails.length) {
       async function fetchData() {
         await onGetMatchDetails();
-        await onGetTeamCaptain("csk")
-        await onGetTeamCaptain("mi")
+      }
+      fetchData();
+      // await onGetTeamCaptain("csk")
+      // await onGetTeamCaptain("mi")
+    }
+    setisLoading(false);
+  }, []);
+  
+  useEffect(() => {
+    if(matchDetails.length && captain.length < 2) {
+      async function fetchData() {
+        const { teamA, teamB } = matchDetails[0];
+        await onGetTeamCaptain(teamA)
+        await onGetTeamCaptain(teamB)
       }
       fetchData();
     }
     setisLoading(false);
-  }, []);
-
+  }, [matchDetails]);
+  
   // useEffect(() => {
   //   async function fetchData() {
   //     if (matchDetails.length) {
