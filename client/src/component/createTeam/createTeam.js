@@ -36,8 +36,10 @@ function CreateTeam(props) {
     if (!team1.length || !team2.length) {
       seterror("Please select two teams");
       return;
+    } else {
+      seterror("");
+      onGetRandomPlayersOfMatch();
     }
-    onGetRandomPlayersOfMatch();
   };
   return (
     <div className="create-team-section">
