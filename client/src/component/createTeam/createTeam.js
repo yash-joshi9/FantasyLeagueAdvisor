@@ -16,16 +16,29 @@ function CreateTeam(props) {
     teamError,
   } = props;
 
+  const [team1, setTeam1] = useState("");
+  const [team2, setTeam2] = useState("");
+  const [error, seterror] = useState("");
+
   const handleSelectedTeam = async (e) => {
     const teamName = e.currentTarget.textContent;
-    await onHandleSelectedTeam(teamName);
+    setTeam1(teamName)
+    await onHandleSelectedTeam(teamName, team2);
   };
 
   const handleSelectedTeamTwo = async (e) => {
     const teamName = e.currentTarget.textContent;
-    await onHandleSelectedTeamTwo(teamName);
+    setTeam2(teamName)
+    await onHandleSelectedTeamTwo(teamName, team1);
   };
 
+  const handleButton = () => {
+    if (!team1.length || !team2.length) {
+      seterror("Please select two teams");
+      return;
+    }
+    onGetRandomPlayersOfMatch();
+  };
   return (
     <div className="create-team-section">
       <div className="container-img" />
@@ -61,11 +74,9 @@ function CreateTeam(props) {
                 </DropDown>
               </div>
             </div>
+            <div className="error-tag">{error && error}</div>
             <div className="button-wapper">
-              <button
-                className="button-click"
-                onClick={() => onGetRandomPlayersOfMatch()}
-              >
+              <button className="button-click" onClick={handleButton}>
                 Submit
               </button>
             </div>

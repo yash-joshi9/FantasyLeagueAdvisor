@@ -171,13 +171,13 @@ export const getRandomPlayersOfMatch = (teamName) => async (
   } catch (error) {}
 };
 
-export const handleSelectedTeam = (team) => (dispatch, getState) => {
+export const handleSelectedTeam = (team, team2) => (dispatch, getState) => {
   const {
     team: { allTeams },
   } = getState();
 
   const newTeam = allTeams.filter((i) => {
-    return i !== team;
+    return i !== team && i !== team2;
   });
 
   return dispatch(
@@ -185,13 +185,13 @@ export const handleSelectedTeam = (team) => (dispatch, getState) => {
   );
 };
 
-export const handleSelectedTeamTwo = (team) => (dispatch, getState) => {
+export const handleSelectedTeamTwo = (team, team2) => (dispatch, getState) => {
   const {
     team: { allTeams },
   } = getState();
 
   const newTeam = allTeams.filter((i) => {
-    return i !== team;
+    return i !== team && i !== team2;
   });
 
   return dispatch(
