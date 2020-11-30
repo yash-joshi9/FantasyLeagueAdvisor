@@ -6,13 +6,14 @@ function LandingPage(props) {
     <div className="landing-section">
       <div className="intro-main">
         <div className="title1">
-          Fantasy League welcomes you to an amazing virtual cricket league which
-          connects you to various other players and gives you a chance to test
-          your gaming skills.
+          Fantasy League welcomes you to an amazing virtual cricket league.
+          <br/>Connect with other players
+          <br/>&
+          <br/>Test your GAMING SKILLS.
         </div>
         <div className="title2">
-          Build your own team here, get a real life experience with multiple
-          players collaborating as a team.
+          Build your own team here,
+          <br/>Get a real life experience with multiple players collaborating as a team.
         </div>
       </div>
     </div>

@@ -72,6 +72,7 @@ function HeaderComponent(props) {
   return (
     <div className={`header-main ${scroll ? "is-scrolled" : ""}`}>
       <div className="title-part">Fantasy League Advisor</div>
+      <div className="title-tag">TEST YOUR GAMING SKILLS</div>
       <div className="header-container">
         <div className="logo-part">FLA</div>
         <div className="header-list-part">

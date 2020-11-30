@@ -19,7 +19,18 @@
     justify-content: center;
     color: #5a328a;
     font-weight: bold;
-    font-size: 32px;
+    font-size: 40px;
+    font-family: 'Dancing Script', cursive;
+}
+.title-tag {
+    align-items: center;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    // color: #5a328a;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 15px;
     font-family: 'Dancing Script', cursive;
 }
 .logo-part {
