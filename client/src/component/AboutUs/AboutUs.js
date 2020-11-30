@@ -5,7 +5,7 @@ function AboutUs(props) {
   return (
     <div className="about-us-section">
       <div className="heading-wrapper">
-        SE FINAL PROJECT
+        ASE FINAL PROJECT
       </div>
       <div className="wrap-team-members">
         <div className="team-members">

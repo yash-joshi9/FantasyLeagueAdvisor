@@ -25,7 +25,7 @@ const getHeaderFooter = (content) => {
             <div className="section-main-container">
                 {content}
             </div>
-            {/* <FooterComponent /> */}
+            <FooterComponent />
         </Fragment>
     )
 }
