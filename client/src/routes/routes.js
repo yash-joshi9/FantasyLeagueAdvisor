@@ -13,6 +13,7 @@ import teamsContainer from "../container/teamsContainer";
 import CreateTeamContainer from "../container/createTeam";
 import MatchesContainer from "../container/MatchesContainer";
 import AboutUs from "../component/AboutUs/AboutUs" 
+import HelpPage from "../component/HelpPage/HelpPage";
 
 
 const cookies = new Cookies();
@@ -47,6 +48,7 @@ export const Routes = () => {
                         <Route path="/matches" exact={true} component={MatchesContainer} />
                         <ProtectedRoute path="/create-a-team"  component={CreateTeamContainer} />
                         <Route path="/" exact={true} component={LandingPage} />
+                        <Route path="/help-page" exact={true} component={HelpPage} />
                         <ProtectedRoute path="/teams/:team"  component={teamsContainer} />
                         {/* <Route path="/sign-up" exact={true} component={SignUpContainer} /> */}
                         {/* <Route path="/login" exact={true} component={LoginContainer} /> */}
