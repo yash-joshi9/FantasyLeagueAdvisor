@@ -87,9 +87,11 @@ function CreateTeam(props) {
           </div>
         </div>
         <div className="suggested Team">
-          <div>Suggested Team</div>
-
-          <div className="suggested-container">
+          <div>The suggested team will lead you to earn more profit on betting website .</div>
+          <div className =" profit">
+          Suggested Team
+           </div>
+            <div className="suggested-container">
             {suggestedTeam[0] &&
               suggestedTeam[0].map((item, key) => (
                 <PlayerProfile
