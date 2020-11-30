@@ -14,3 +14,19 @@
     position: absolute;
     top: 700px;
 }
+
+
+.greet-msg {
+    margin-left: 30px;
+    font-size: 30px;
+}
+
+.greet-text {
+    margin-top: 20px;
+    font-size: 20px;
+
+    span {
+        cursor: pointer;
+        text-decoration: underline;
+    }
+}
